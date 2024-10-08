@@ -1,0 +1,23 @@
+{
+  "name": "easymath",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "lint": "prettier --write --single-quote '**/*.ts' && eslint --fix .",
+    "preview": "vite preview --open"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.12.0",
+    "@types/eslint__js": "^8.42.3",
+    "eslint": "^9.12.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "globals": "^15.10.0",
+    "prettier": "^3.3.3",
+    "typescript": "5.6.2",
+    "typescript-eslint": "^8.8.1",
+    "vite": "^5.4.1"
+  }
+}
