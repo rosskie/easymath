@@ -34,18 +34,26 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     needs: build
+    permissions:
+      id-token: write
+      pages: write
     environment:
       name: github-pages
       url: ${{steps.deployment.outputs.page_url}}
 
     steps:
-    - uses: actions/download-artifact@master
-      with:
-        name: page
-        path: .
-    - uses: actions/configure-pages@v5
-    - uses: actions/upload-pages-artifact@v3
-      with:
-        path: .
-    - id: deployment
-      uses: actions/deploy-pages@main
+      - name: Set Node.js 22.x
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.x
+
+      - uses: actions/download-artifact@master
+        with:
+          name: page
+          path: .
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+      - id: deployment
+        uses: actions/deploy-pages@main
