@@ -1,0 +1,30 @@
+name: Fly me to the moon
+run-name: ${{ github.actor }} is shipping magic numbers to the moon 🚀🌙✨
+on:
+  push:
+    branches: [ 'main', 'action' ]
+  pull_request:
+    branches: [ 'main' ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set Node.js 22.x
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.x
+
+      - name: Run yarn install
+        uses: borales/actions-yarn@v5
+        with:
+          cmd: install
+        
+      - name: run yarn build
+        uses: borales/actions-yarn@v5
+        with:
+          cmd: build
+      
