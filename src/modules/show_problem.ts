@@ -7,7 +7,7 @@ const MAX_DIGIT = 2;
 const BASE_10 = 10;
 const SIGNS = ['+', '-'];
 
-import { changeButtonText } from './change_element_text';
+import { changeButtonText } from '../util/change_element_text';
 
 const params = new URL(location.href).searchParams;
 const numberOfElements = getParam(

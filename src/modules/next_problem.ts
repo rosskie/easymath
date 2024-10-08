@@ -4,6 +4,7 @@ import { showProblem } from './show_problem';
 import { showAnswer } from './show_answer';
 import { changeColor } from './change_color';
 import { adjustTextSize } from './adjust_text_size';
+import { isMobile } from '../util/is_mobile';
 
 const NEXT_EVENTS = ['Space', 'Enter'];
 
@@ -27,10 +28,23 @@ export function setupNext(btnElement: HTMLButtonElement) {
     adjustTextSize(textElement, isProblem);
     isProblem = !isProblem;
   };
-  btnElement.addEventListener('click', () => next());
-  document.addEventListener('keyup', (event) => {
-    if (NEXT_EVENTS.includes(event.code)) {
+  if (isMobile) {
+    [...bgElements].forEach((el) => {
+      el.addEventListener('click', () => {
+        next();
+      });
+    });
+  } else {
+    btnElement.addEventListener('click', () => {
       next();
-    }
-  });
+      setTimeout(() => {
+        btnElement.blur();
+      }, 100);
+    });
+    document.addEventListener('keyup', (event) => {
+      if (NEXT_EVENTS.includes(event.code)) {
+        next();
+      }
+    });
+  }
 }
