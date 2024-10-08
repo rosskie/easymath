@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "lint": "prettier --write --single-quote '**/*.ts' && eslint --fix .",
-    "preview": "vite preview --open"
+    "preview": "yarn build && vite preview --open"
   },
   "devDependencies": {
     "@eslint/js": "^9.12.0",
