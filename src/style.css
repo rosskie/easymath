@@ -62,6 +62,7 @@ section.middle_frame {
 .next_button {
   position: absolute;
   bottom: 45px;
+  left: 50%;
   transform: translate(-50%);
 }
 
