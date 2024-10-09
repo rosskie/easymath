@@ -2,7 +2,7 @@
 
 const FRAME_SIZE = 30;
 const INIT_FONT_SIZE = 500;
-const SMALLEST_FONT_SIZE = 20;
+const SMALLEST_FONT_SIZE = 30;
 
 export function adjustTextSize(
   element: HTMLDivElement,
@@ -13,7 +13,10 @@ export function adjustTextSize(
     ? `${INIT_FONT_SIZE}px`
     : `${Math.floor(2 * parseFloat(element.style.fontSize))}px`;
 
-  const resize = () => {
+  const appEl = document.getElementById('app');
+  const prevBodyHeight = appEl!.offsetHeight + 2 * FRAME_SIZE + 1;
+
+  const resize = (prevHeight = prevBodyHeight): void => {
     const fontSize = parseFloat(element.style.fontSize);
     const isFontTooSmall: boolean = fontSize <= SMALLEST_FONT_SIZE;
     if (isFontTooSmall) {
@@ -21,18 +24,18 @@ export function adjustTextSize(
     }
     element.style.fontSize = `${fontSize - 5}px`;
 
-    const innerHeight = Math.min(window.innerHeight, screen.availHeight);
+    const innerHeight = Math.min(window.innerHeight, window.outerHeight);
+    const bodyHeight = appEl!.offsetHeight + 2 * FRAME_SIZE;
 
     const isOverflowing =
       element.clientHeight < element.scrollHeight ||
-      innerHeight <
-        document.getElementById('app')!.offsetHeight + 2 * FRAME_SIZE;
+      (bodyHeight < prevHeight && innerHeight < bodyHeight);
 
     if (isOverflowing) {
-      resize();
+      resize(bodyHeight);
     }
   };
-  resize();
+  resize(prevBodyHeight);
 
   if (isFirst) {
     setTimeout(() => {
