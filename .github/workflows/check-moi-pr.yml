@@ -1,0 +1,16 @@
+name: Check my PR puriizu
+run-name: ${{ github.actor }} has created or updated a PR 🐇✨
+on:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Biome CLI
+        uses: biomejs/setup-biome@v2
+
+      - name: Run Biome
+        run: biome ci .
