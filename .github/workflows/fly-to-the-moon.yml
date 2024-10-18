@@ -20,7 +20,9 @@ jobs:
         with:
           cmd: install
 
-      # TODO: add a step to run yarn lint
+      # Lint check with Biome
+      - uses: biomejs/setup-biome@v2
+      - run: biome ci .
 
       - name: run yarn build
         uses: borales/actions-yarn@v5
