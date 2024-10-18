@@ -9,30 +9,18 @@ const NEXT_EVENTS = ['Space', 'Enter'];
 let isProblem = false;
 
 export function setupNext(btnElement: HTMLButtonElement) {
-  const textElement: HTMLDivElement | null = document.querySelector('#js_quiz');
-  const bgElements: HTMLElement[] | [] = [
-    ...document.querySelectorAll('section'),
-  ];
-  if (!textElement) {
-    return;
-  }
-  const next = () => {
-    if (isProblem) {
-      showProblem(textElement);
-    } else {
-      showAnswer(textElement);
-    }
-    changeColor(bgElements, isProblem);
-    adjustTextSize(textElement, isProblem);
-    isProblem = !isProblem;
-  };
   if (isMobile) {
+    // allow tap on the background to go to the next problem
+    const bgElements: HTMLElement[] | [] = [
+      ...document.querySelectorAll('section'),
+    ];
     for (const el of bgElements) {
       el.addEventListener('click', () => {
         next();
       });
     }
   } else {
+    // let users click the button or press the space key to go to the next problem
     btnElement.addEventListener('click', () => {
       next();
       setTimeout(() => {
@@ -45,4 +33,29 @@ export function setupNext(btnElement: HTMLButtonElement) {
       }
     });
   }
+  setupColorPreferenceListener();
+}
+
+// show the next problem or answer
+function next(): void {
+  const textElement: HTMLDivElement | null = document.querySelector('#js_quiz');
+  if (!textElement) {
+    return;
+  }
+  if (isProblem) {
+    showProblem(textElement);
+  } else {
+    showAnswer(textElement);
+  }
+  changeColor(isProblem);
+  adjustTextSize(textElement, isProblem);
+  isProblem = !isProblem;
+}
+
+function setupColorPreferenceListener(): void {
+  window
+    .matchMedia('(prefers-color-scheme: dark)')
+    .addEventListener('change', () => {
+      changeColor(!isProblem);
+    });
 }

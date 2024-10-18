@@ -1,11 +1,18 @@
 :root {
+  /* color pallette: Easy Math https://colormagic.app/palette/67128fc7eab8122db20f840e */
+  --color-black: #242424;
+  --color1: #e9ccb4;
+  --color2: #eabbb3;
+  --color3: #e39d9c;
+  --color4: #df8686;
+  --color5: #bd726b;
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  color: var(--color2);
+  background-color: var(--color-black);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -21,25 +28,25 @@ body {
   margin: 0;
 }
 
-section.top_frame {
-  background-color: rgb(100, 108, 255);
-  height: 30px;
-  width: calc(100vw - 60px);
+section {
+  background-color: var(--color5);
   margin: 0 0 0 30px;
+  width: calc(100vw - 60px);
+}
+
+section.top_frame {
+  height: 30px;
+
   border-radius: 30px 30px 0 0;
 }
 section.bottom_frame {
-  background-color: rgb(100, 108, 255);
   height: 30px;
-  width: calc(100vw - 60px);
-  margin: 0 0 0 30px;
+
   border-radius: 0 0 30px 30px;
 }
 section.middle_frame {
-  background-color: rgb(100, 108, 255);
   height: calc(100vh - 120px);
-  width: calc(100vw - 60px);
-  margin: 0 0 0 30px;
+
   display: table;
 }
 
@@ -73,27 +80,28 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: var(--color-black);
+  color: var(--color2);
   cursor: pointer;
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: #646cff;
+  border-color: slategray;
 }
 button:focus,
 button:focus-visible {
-  outline: 1px inset hotpink;
+  outline: 1px inset var(--color1);
 }
 
 @media (prefers-color-scheme: light) {
   :root {
-    color: #213547;
-    background-color: #ffffff;
+    color: var(--color5);
+    background-color: whitesmoke;
   }
-  a:hover {
-    color: #747bff;
+  section {
+    background-color: var(--color2);
   }
   button {
-    background-color: #f9f9f9;
+    background-color: whitesmoke;
   }
 }
