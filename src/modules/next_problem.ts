@@ -1,10 +1,8 @@
-'use strict';
-
-import { showProblem } from './show_problem';
-import { showAnswer } from './show_answer';
-import { changeColor } from './change_color';
-import { adjustTextSize } from './adjust_text_size';
 import { isMobile } from '../util/is_mobile';
+import { adjustTextSize } from './adjust_text_size';
+import { changeColor } from './change_color';
+import { showAnswer } from './show_answer';
+import { showProblem } from './show_problem';
 
 const NEXT_EVENTS = ['Space', 'Enter'];
 
@@ -29,11 +27,11 @@ export function setupNext(btnElement: HTMLButtonElement) {
     isProblem = !isProblem;
   };
   if (isMobile) {
-    [...bgElements].forEach((el) => {
+    for (const el of bgElements) {
       el.addEventListener('click', () => {
         next();
       });
-    });
+    }
   } else {
     btnElement.addEventListener('click', () => {
       next();

@@ -1,5 +1,3 @@
-'use strict';
-
 export function changeElementText(element: HTMLElement, text = ''): void {
   element.textContent = text;
 }
