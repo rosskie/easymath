@@ -1,5 +1,3 @@
-'use strict';
-
 const DEFAULT_N_OF_ELEMENTS = 2;
 const MAX_N_OF_ELEMENTS = 5;
 const DEFAULT_DIGIT = 1;
@@ -16,7 +14,7 @@ const numberOfElements = getParam(
   MAX_N_OF_ELEMENTS,
 );
 const digit = getParam('digit', DEFAULT_DIGIT, MAX_DIGIT);
-const digitMultiplier = Math.pow(BASE_10, digit);
+const digitMultiplier = BASE_10 ** digit;
 const mode = params.get('mode') || 'random';
 
 export function showProblem(element: HTMLDivElement) {
@@ -36,11 +34,11 @@ export function showProblem(element: HTMLDivElement) {
     if (i <= 1) {
       result = number;
     } else {
-      switchprevSign: switch (prevSign) {
+      switch (prevSign) {
         case '-':
           result -= number;
-          break switchprevSign;
-        case '+':
+          break;
+        // case '+':
         default:
           result += number;
       }
@@ -55,7 +53,10 @@ function getParam(
   defaultVal: number,
   maxVal: number,
 ): number {
-  return Math.min(parseInt(params.get(paramName) || '') || defaultVal, maxVal);
+  return Math.min(
+    Number.parseInt(params.get(paramName) || '') || defaultVal,
+    maxVal,
+  );
 }
 
 function getSign(mode: string | '', i: number | 0): string {
@@ -72,7 +73,7 @@ function getSign(mode: string | '', i: number | 0): string {
     case '-+':
     case 'minusplus':
       return SIGNS[(i + 1) % SIGNS.length];
-    case 'random':
+    // case 'random':
     default:
       return SIGNS[Math.floor(Math.random() * SIGNS.length)];
   }

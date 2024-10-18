@@ -85,8 +85,6 @@ button:focus-visible {
   outline: 1px inset hotpink;
 }
 
-
-
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
@@ -98,4 +96,4 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
-} 
+}

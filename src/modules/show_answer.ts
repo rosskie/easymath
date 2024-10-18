@@ -1,5 +1,3 @@
-'use strict';
-
 import { changeButtonText } from '../util/change_element_text';
 
 export function showAnswer(element: HTMLDivElement) {
