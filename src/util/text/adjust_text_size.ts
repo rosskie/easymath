@@ -40,6 +40,14 @@ export function adjustTextSize(
 
   if (isFirst) {
     setTimeout(() => {
+      const middle = document.getElementById('js_middle');
+      if (middle) {
+        middle.scrollIntoView({
+          behavior: 'auto',
+          block: 'center',
+          inline: 'center',
+        });
+      }
       resize();
     }, 50);
   }

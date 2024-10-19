@@ -1,6 +1,6 @@
+import { changeColor } from '../util/color/change_color';
 import { isMobile } from '../util/is_mobile';
-import { adjustTextSize } from './adjust_text_size';
-import { changeColor } from './change_color';
+import { adjustTextSize } from '../util/text/adjust_text_size';
 import { showAnswer } from './show_answer';
 import { showProblem } from './show_problem';
 

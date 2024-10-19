@@ -68,9 +68,10 @@ section.middle_frame {
 
 .next_button {
   position: absolute;
-  bottom: 45px;
+  bottom: 2em;
   left: 50%;
   transform: translate(-50%);
+  touch-action: manipulation;
 }
 
 button {

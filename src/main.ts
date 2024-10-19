@@ -1,13 +1,13 @@
 import './style.css';
-import { adjustTextSize } from './modules/adjust_text_size';
-import { setupNext } from './modules/next_problem';
+import { setupNext } from './modules/prep_next_problem';
 import { showProblem } from './modules/show_problem';
+import { adjustTextSize } from './util/text/adjust_text_size';
 
 const app = document.querySelector<HTMLDivElement>('#app');
 if (app) {
   app.innerHTML = `
     <section class="top_frame"></section>
-    <section class="middle_frame">
+    <section id="js_middle" class="middle_frame">
       <div id="js_card" class="card">
         <div id="js_quiz" class="big_problem">1 + 1 =</div>
         <button id="js_next" class="next_button" type="button">next</button>

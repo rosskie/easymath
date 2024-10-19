@@ -5,6 +5,10 @@ on:
 
 jobs:
   inspect:
+    # Only run on PRs without label 'test-deploy'
+    #   PR with the label 'test-deploy' will be deployed, and there is a check run before deployment
+    #   To avoid running the check twice, we skip the check for PRs with the label 'test-deploy'
+    if: "!contains(github.event.pull_request.labels.*.name, 'test-deploy')"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
