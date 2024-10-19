@@ -1,7 +1,7 @@
 import './style.css';
-import { adjustTextSize } from './modules/adjust_text_size';
-import { setupNext } from './modules/next_problem';
+import { setupNext } from './modules/prep_next_problem';
 import { showProblem } from './modules/show_problem';
+import { adjustTextSize } from './util/text/adjust_text_size';
 
 const app = document.querySelector<HTMLDivElement>('#app');
 if (app) {

@@ -3,9 +3,13 @@ run-name: ${{ github.actor }} is shipping magic numbers to the moon 🚀🌙✨
 on:
   push:
     branches: [ 'main' ]
+  pull_request:
+    types: [labeled]
 
 jobs:
   build:
+    # Only run on main branch or PRs with label 'test-deploy'
+    if: github.ref == 'refs/heads/main' || contains(github.event.pull_request.labels.*.name, 'test-deploy')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
