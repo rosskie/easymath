@@ -1,6 +1,5 @@
 import { changeColor } from '../util/color/change_color';
 import { isMobile } from '../util/is_mobile';
-import { adjustButtonPos } from '../util/position/adjust_button_pos';
 import { adjustTextSize } from '../util/text/adjust_text_size';
 import { showAnswer } from './show_answer';
 import { showProblem } from './show_problem';
@@ -35,7 +34,6 @@ export function setupNext(btnElement: HTMLButtonElement) {
     });
   }
   setupColorPreferenceListener();
-  setupPosListener();
 }
 
 // show the next problem or answer
@@ -60,13 +58,4 @@ function setupColorPreferenceListener(): void {
     .addEventListener('change', () => {
       changeColor(!isProblem);
     });
-}
-
-function setupPosListener(): void {
-  document.addEventListener('scroll', () => {
-    adjustButtonPos();
-  });
-  screen.orientation.addEventListener('change', () => {
-    adjustButtonPos();
-  });
 }

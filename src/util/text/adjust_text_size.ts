@@ -40,6 +40,7 @@ export function adjustTextSize(
 
   if (isFirst) {
     setTimeout(() => {
+      window.scroll({ top: -1, left: 0, behavior: 'smooth' });
       resize();
     }, 50);
   }
